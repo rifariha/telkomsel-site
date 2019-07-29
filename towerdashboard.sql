@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2019 at 03:31 PM
+-- Generation Time: Jul 29, 2019 at 08:04 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -122,23 +122,11 @@ CREATE TABLE `tb_foto` (
   `foto_dua` varchar(200) NOT NULL,
   `foto_tiga` varchar(200) NOT NULL,
   `foto_empat` varchar(200) DEFAULT NULL,
-  `foto_lokasi` varchar(200) NOT NULL,
+  `file_lokasi` varchar(200) NOT NULL,
+  `form_survey` varchar(255) NOT NULL,
   `video` varchar(200) NOT NULL,
   `kode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_foto`
---
-
-INSERT INTO `tb_foto` (`id_foto`, `foto_satu`, `foto_dua`, `foto_tiga`, `foto_empat`, `foto_lokasi`, `video`, `kode`) VALUES
-(7, 'Foto_Satu_SBG-0001.jpg', 'Foto_Dua_SBG-0001.jpeg', 'Foto_Satu_SBG-0001.jpg', 'Foto_Empat_SBG-0001.png', 'Foto_Lokasi_SBG-0001.jpg', '', 'SBG-0001'),
-(8, 'Foto_Satu_SBT-0001.jpg', 'Foto_Dua_SBT-0001.jpeg', 'Foto_Satu_SBT-0001.jpg', NULL, 'Foto_Lokasi_SBT-0001.jpg', '', 'SBT-0001'),
-(9, 'Foto_Satu_SBG-0002.jpg', 'Foto_Dua_SBG-0002.jpeg', 'Foto_Satu_SBG-0002.jpg', 'Foto_Empat_SBG-0002.png', 'Foto_Lokasi_SBG-0002.jpg', '', 'SBG-0002'),
-(10, 'Foto_Satu_SBS-0001.jpg', 'Foto_Dua_SBS-0001.jpeg', 'Foto_Satu_SBS-0001.jpg', NULL, 'Foto_Lokasi_SBS-0001.jpg', '', 'SBS-0001'),
-(11, 'Foto_Satu_SBT-0002.jpg', 'Foto_Dua_SBT-0002.jpeg', 'Foto_Satu_SBT-0002.jpg', NULL, 'Foto_Lokasi_SBT-0002.jpg', '', 'SBT-0002'),
-(12, 'Foto_Satu_SBS-0002.jpg', 'Foto_Dua_SBS-0002.jpeg', 'Foto_Satu_SBS-0002.jpg', 'Foto_Empat_SBS-0002.png', 'Foto_Lokasi_SBS-0002.jpg', '', 'SBS-0002'),
-(14, 'Foto_Satu_SBS-00041.PNG', 'Foto_Dua_SBS-00041.PNG', 'Foto_Satu_SBS-00041.PNG', NULL, 'Foto_Lokasi_SBS-00041.PNG', 'www.youtube.com', 'SBS-0004');
 
 -- --------------------------------------------------------
 
@@ -352,15 +340,9 @@ CREATE TABLE `tb_log` (
   `id_log` int(10) NOT NULL,
   `user` varchar(100) NOT NULL,
   `input` varchar(100) NOT NULL,
+  `aksi` varchar(50) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_log`
---
-
-INSERT INTO `tb_log` (`id_log`, `user`, `input`, `tanggal`) VALUES
-(1, 'user111', 'SBS-0004', '2019-07-29 08:41:51');
 
 -- --------------------------------------------------------
 
@@ -408,7 +390,7 @@ CREATE TABLE `tb_tower` (
   `outlet` varchar(255) NOT NULL,
   `reg_dev` varchar(50) NOT NULL,
   `kat_poi` varchar(50) NOT NULL,
-  `form_survey` text NOT NULL,
+  `form` text NOT NULL,
   `summary_survey` text NOT NULL,
   `competitor` varchar(50) NOT NULL,
   `network` varchar(50) NOT NULL,
@@ -416,25 +398,6 @@ CREATE TABLE `tb_tower` (
   `tanggal` date NOT NULL,
   `hapus` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_tower`
---
-
-INSERT INTO `tb_tower` (`id_data`, `kode_lokasi`, `region`, `branch`, `cluster_sales`, `kabupaten`, `kecamatan`, `kelurahan`, `latitude`, `longitude`, `populasi`, `arpu`, `tower_usulan`, `band_usulan`, `jarak`, `site`, `outlet`, `reg_dev`, `kat_poi`, `form_survey`, `summary_survey`, `competitor`, `network`, `remark`, `tanggal`, `hapus`) VALUES
-(14, 'SBG-0001', 3, 14, 37, 179, 'Binjai Utara', 'Sidodadi', '3.60725345', '98.48964214', '1000', '90', 'pojokan', '80mbps', '90 Meter', '20 Meter', '', '1000', '01293', 'Bagus', 'Bagus Banget', 'XL,Indosat', '2G 3G 4G', 'nice', '2019-07-23', '0'),
-(15, 'SBT-0001', 2, 8, 19, 92, 'Padang Utara', 'Sate Padang', '-0.95242319', '100.36359137', '1000', '1000', 'ujung', '1000 mbps', '90 Meter', '20 Meter', '', '1000', '12390', 'Bagus', 'Bagus Banget', 'Indosat,Smartfren', '3G', 'Good', '2019-07-23', '0'),
-(16, 'SBG-0002', 3, 11, 29, 138, 'Medan Amplas', 'Harjosari I', '3.53582415', '98.7196547', '300', '301', 'Dekat SPBU', '80Mbps', '40 Meter', '40 Meter', '', '1000', '812930', 'Good', 'Good', 'XL,Indosat,Three,Smartfren', '3G 4G', 'Good', '2019-07-23', '0'),
-(17, 'SBS-0001', 1, 3, 8, 45, 'Lampung Selatan', 'Bojonegoro', '-4.8555039', '105.0272986', '900', '800', 'Region 10', '100 Mbps', '10 Meter', '5 Meter', '', '901', '18321', 'Bagus', 'Bagus', 'Smartfren', '3G', 'Bagus', '2019-07-23', '0'),
-(18, 'SBT-0002', 2, 7, 17, 80, 'Dumai Barat', 'Dudumai', '1.6318056', '101.4424177', '1000', '90', 'New Infra', '3G', '90 Meter', '20 Meter', '', '1000', '12390', 'Complete', 'OK', 'XL,Indosat', '2G 3G', 'nice', '2019-07-23', '0'),
-(19, 'SBT-0003', 2, 8, 20, 94, 'Binjai Utara', 'Sidodadi', '3.60725345', '98.48964214', '300', '301', 'New Infra', '3G', '90 Meter', '20 Meter', '', '1000', '18321', 'Complete', 'OK', 'Three,Smartfren', '3G', 'Good', '2019-07-23', '0'),
-(20, 'SBS-0002', 1, 2, 4, 23, 'Binjai Utara', 'Sidodadi', '3.60725345', '98.48964214', '1000', '1000', 'Collocation', '2G 3G', '90 Meter', '20 Meter', '', '100000', 'Residential', 'Complete', 'OK', 'XL,Indosat', '2G 3G 4G', 'ada ooutlet xl', '2019-07-23', '0'),
-(21, 'SBT-0004', 2, 7, 17, 79, 'medan amplas', 'harjosari 1', '3.98390843', '98.3434094034', '1000', '50000', 'New Infra', '3G', '50 ', '30 meter', '', '10000000', 'HP CENTER', 'Complete', 'OK', 'XL,Indosat', '3G', 'good', '2019-07-29', '0'),
-(22, 'SBS-0003', 1, 2, 5, 29, 'medan amplas', 'medan123', '3.98390843', '98.2323', '1000', '23829', 'New Infra', '2G 3G', '50', '30 meter', '', '223232', 'MALL & HANGOUT PLACE', 'Not Complete', 'Not OK', 'Indosat', '3G', 'good', '2019-07-29', '0'),
-(23, 'SBS-0004', 1, 1, 2, 12, 'Medan Belawan', 'Ambarita', '306541', '4554516', '10000', '90', 'New Infra', '3G', '90', '30', '8', '1000000', 'MALL & HANGOUT PLACE', 'Complete', 'OK', 'XL,Three', '2G 3G 4G', 'Good', '2019-07-29', '0'),
-(26, 'SBT-7-17-0', 2, 7, 17, 79, 'Medan Belawan', 'medan', '306541', '4554516', '100', '100', 'Collocation', '2G', '100', '199', '19', '1999', 'OTHERS', 'Complete', 'OK', 'XL,Indosat', '2G 3G', 'ok', '2019-07-29', '0'),
-(27, 'SBS-1-2-0001', 1, 1, 2, 9, 'Medan Belawan', 'medan', '306541', '4554516', '100', '100', 'Collocation', '2G', '100', '199', '19', '1999', 'OTHERS', 'Complete', 'OK', 'XL,Indosat', '2G 3G', 'ok', '2019-07-29', '0'),
-(28, 'SBT-7-17-0008', 2, 7, 17, 79, 'meda', 'sdsd', '1212', '323', '1010', '1010', 'New Infra', '2G', '12', '212', '212', '1212', 'PUBLIC AREA', 'Complete', 'OK', 'Three', '2G 3G', 'lhdwhdhedsa', '2019-07-29', '0');
 
 -- --------------------------------------------------------
 
@@ -538,7 +501,7 @@ ALTER TABLE `tb_cluster_sales`
 -- AUTO_INCREMENT for table `tb_foto`
 --
 ALTER TABLE `tb_foto`
-  MODIFY `id_foto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_foto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tb_kabupaten`
@@ -550,7 +513,7 @@ ALTER TABLE `tb_kabupaten`
 -- AUTO_INCREMENT for table `tb_log`
 --
 ALTER TABLE `tb_log`
-  MODIFY `id_log` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_log` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_region`
@@ -562,7 +525,7 @@ ALTER TABLE `tb_region`
 -- AUTO_INCREMENT for table `tb_tower`
 --
 ALTER TABLE `tb_tower`
-  MODIFY `id_data` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_data` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
