@@ -103,7 +103,8 @@ class Form extends CI_Controller {
 			
 		}
 	
-		$competitor = (count($this->input->post('competitor')) > 0) ? implode(',', $this->input->post('competitor')) : ""; 
+		$competitor = (count($this->input->post('competitor')) > 0) ? implode('|', $this->input->post('competitor')) : "";
+		$network_competitor = (count($this->input->post('network_competitor')) > 0) ? implode('|', $this->input->post('network_competitor')) : ""; 
 		
 		$data = array(
 			'kode_lokasi' => $kode,
@@ -124,10 +125,10 @@ class Form extends CI_Controller {
 			'outlet'=>$this->input->post('outlet'),
 			'reg_dev' =>$this->input->post('reg_dev'),
 			'kat_poi'=>$this->input->post('kat_poi'),
-			'form_survey'=>$this->input->post('form_survey'),
+			'form'=>$this->input->post('form_survey'),
 			'summary_survey'=>$this->input->post('summary_survey'),
 			'competitor'=>$competitor,
-			'network'=>$this->input->post('network'),
+			'network'=>$network_competitor,
 			'remark'=>$this->input->post('remark'),
 			'tanggal'=>date("Y-m-d")
 			);
@@ -231,21 +232,39 @@ class Form extends CI_Controller {
 	        
 	        $this->load->library('upload');
 	        
-	        $config['upload_path']          = './assets/foto/';
-	        $config['allowed_types']        = 'jpg|jpeg|png|bmp';
+	        $config['upload_path']          = './assets/pdf/';
+	        $config['allowed_types']        = 'pdf';
 	        $config['max_size']             = '10240';
-	        $config['file_name']            = 'Foto_Lokasi_'.$kode;  
+	        $config['file_name']            = 'File_Surrounding_'.$kode;  
 	        
 	        $this->upload->initialize($config);
 
-	        $this->upload->do_upload('foto_lokasi');
+	        $this->upload->do_upload('lokasi');
 	        
 	        $gbr = $this->upload->data();
 	        $dataga = array(
 	           'namafile' => $gbr['file_name'],
 	        );
 
-	        $foto_lokasi = implode(" ",$dataga);
+	        $lokasi = implode(" ",$dataga);
+
+	        $this->load->library('upload');
+	        
+	        $config['upload_path']          = './assets/pdf/';
+	        $config['allowed_types']        = 'pdf';
+	        $config['max_size']             = '10240';
+	        $config['file_name']            = 'Form_survey_'.$kode;  
+	        
+	        $this->upload->initialize($config);
+
+	        $this->upload->do_upload('form_survey');
+	        
+	        $gbr = $this->upload->data();
+	        $dataga = array(
+	           'namafile' => $gbr['file_name'],
+	        );
+
+	        $form_survey = implode(" ",$dataga);
 
 	        $video = $this->input->post('link_video');
 
@@ -254,7 +273,8 @@ class Form extends CI_Controller {
 	        	'foto_dua' => $foto_dua,
 	        	'foto_tiga' => $foto_satu,
 	        	'foto_empat' => $foto_empat,
-	        	'foto_lokasi' => $foto_lokasi,
+	        	'file_lokasi' => $lokasi,
+	        	'form_survey' => $form_survey,
 	        	'kode' => $this->input->post('kode'),
 	        	'video' => $video
 	        	);
@@ -264,7 +284,8 @@ class Form extends CI_Controller {
 	        {
 	        	$data2 = array(
 	        	'user' => $this->session->userdata('username'),
-	        	'input' => $this->input->post('kode')
+	        	'input' => $this->input->post('kode'),
+	        	'aksi' => 'tambah'
 	        	);
 
 		        $this->db->insert('tb_log',$data2);	
@@ -272,11 +293,9 @@ class Form extends CI_Controller {
 	        }
 	        else
 	        {
-	        	$this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Foto yang anda upload tidak sesuai persyaratan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	        	$this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> File/Foto yang anda upload tidak sesuai persyaratan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	        	redirect('User/Form/upload/$kode');
 	        }
-	        
-
-	        
 	        
 			redirect("User/home");
 		}

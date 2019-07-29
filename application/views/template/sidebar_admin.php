@@ -65,6 +65,11 @@
           <a class=" nav-link <?php if($active_menu == 'list'){ echo 'active';}?>" href="<?php echo base_url()?>Admin/Site"> <i class="ni ni-send text-danger"></i> Lihat data
             </a>
           </li>
+          <li class="nav-item">
+          <a class=" nav-link <?php if($active_menu == 'pwd'){ echo 'active';}?>" href="<?php echo base_url()?>Admin/Change_pwd"> <i class="fa fa-key text-danger"></i> Ganti password
+            </a>
+          </li>
+
         </ul>
         <!-- Divider -->
         <hr class="my-3">

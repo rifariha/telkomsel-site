@@ -58,15 +58,15 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item ">
-          <a class=" nav-link <?php if($active_menu == 'dashboard'){ echo 'active';}?> " href="<?php echo base_url()?>User/home"> <i class="ni ni-tv-2 text-danger"></i> Home
+          <a class=" nav-link <?php if($active_menu == 'dashboard'){ echo 'active';}?> " href="<?php echo base_url()?>User/Home"> <i class="ni ni-tv-2 text-danger"></i> Home
             </a>
           </li>
           <li class="nav-item">
-          <a class=" nav-link <?php if($active_menu == 'form'){ echo 'active';}?>" href="<?php echo base_url()?>User/form"> <i class="ni ni-send text-danger"></i> Input data
+          <a class=" nav-link <?php if($active_menu == 'form'){ echo 'active';}?>" href="<?php echo base_url()?>User/Form"> <i class="ni ni-send text-danger"></i> Input data
             </a>
           </li>
           <li class="nav-item">
-          <a class=" nav-link <?php if($active_menu == 'list'){ echo 'active';}?>" href="<?php echo base_url()?>User/List"> <i class="fa fa-list text-danger"></i> Lihat data
+          <a class=" nav-link <?php if($active_menu == 'list'){ echo 'active';}?>" href="<?php echo base_url()?>User/Site_user"> <i class="fa fa-list text-danger"></i> Lihat data
             </a>
           </li>
           <li class="nav-item">

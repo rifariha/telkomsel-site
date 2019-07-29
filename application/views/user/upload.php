@@ -7,6 +7,7 @@
 <?php $kode = $this->uri->segment(4);?>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
+      <?=$this->session->flashdata('notif')?>
         <div class="header-body">
           <!-- Card stats -->
         <form action="<?php echo base_url()?>User/Form/upload/insert" method="post" enctype="multipart/form-data">
@@ -31,37 +32,42 @@
               <input type="file" name="foto_empat" class="form-control">
             </div>
         </div>
+        <br>
           <br>
-        <div class="col-md-12">
-        <legend style="color:white">Masukkan Foto Site Surrounding</legend> 
-            <div class="col-md-12">
-            <label>Foto Lokasi <span style="color:yellow">*</span></label>
-              <input type="file" name="foto_lokasi" class="form-control" required>
+        <div class="col-md-12 row">
+        <legend style="color:white">Masukkan Form Survey & Site Surrounding (PDF)</legend> 
+            <div class="col-md-6">
+            <label>File Site Surrounding <span style="color:#00f1fd">*</span></label>
+              <input type="file" name="lokasi" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+             <label>File Form Survey <span style="color:#00f1fd">*</span></label>
+              <input type="file" name="form_survey" class="form-control" required>
             </div>
             <a data-toggle="modal" data-target="#modal-default" style="padding-left:20px"> 
                 <small style="color:white"><i class="fa fa-info-circle"></i> Cotoh foto site surrounding </small>
               </a>
               <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-        <div class="modal-content">
-          
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-title-default">Foto Site Surrounding</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                  <p><img src="<?php echo base_url()?>assets/img/area.jpeg" width="100%"></p>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-            </div>
-            
-        </div>
-    </div>
+                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                    <div class="modal-content">
+                      
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="modal-title-default">Site Surrounding</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                              <p><img src="<?php echo base_url()?>assets/img/area.jpeg" width="100%"></p>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                        </div>
+                        
+                    </div>
+                </div>
     </div>
         </div>
         <br>
@@ -98,6 +104,7 @@
         </div>
         <br>
         <p> <span style="color:yellow">*</span> <i style="color:white"> : File harus berformat .jpg atau .png dengan ukuran < 2MB</i></p>
+        <p> <span style="color:#00f1fd">*</span> <i style="color:white"> : File harus berformat .pdf dengan ukuran < 2MB</i></p>
           <br>
         
         <div class="col-md-12">

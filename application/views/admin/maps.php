@@ -9,7 +9,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Foto Kode Lokasi <?php echo $this->uri->segment(4) ?></h3>
+              <h3 class="mb-0">File & Foto Kode Lokasi <?php echo $this->uri->segment(4) ?></h3>
             </div>
                 <?php foreach($maps as $row) {?>
                                    <head>
@@ -48,6 +48,20 @@
              <br>                
             <div class="col-md-12 row">
               <div class="col-md-6">
+                <a href="<?php echo base_url()?>assets/pdf/<?php echo $row->form_survey?>" download>
+                  <button class="btn btn-success"> Download Form Survey </button>
+                </a>
+              </div>
+              <div class="col-md-6">
+              <a href="<?php echo base_url()?>assets/pdf/<?php echo $row->file_lokasi?>" download>
+                <button class="btn btn-success"> Download File Site Surrounding</button>
+              </a>
+              </div>
+            </div>
+            <br>
+            <h2 style="padding-left:20px"> Foto Potensi </h2>
+            <div class="col-md-12 row">
+              <div class="col-md-6">
                 <a href="<?php echo base_url()?>assets/foto/<?php echo $row->foto_satu ?>" target="_blank">
                   <img src="<?php echo base_url()?>assets/foto/<?php echo $row->foto_satu ?>" width="100%">
                 </a>
@@ -57,9 +71,8 @@
                 <img src="<?php echo base_url()?>assets/foto/<?php echo $row->foto_dua ?>" width="100%">
                   </a>
               </div>
-            </div>
             <br>
-              <div class="col-md-6">
+              <div class="col-md-6" style="padding-top:20px">
                 <a href="<?php echo base_url()?>assets/foto/<?php echo $row->foto_tiga ?>" target="_blank">
                   <img src="<?php echo base_url()?>assets/foto/<?php echo $row->foto_tiga ?>" width="100%">
                 </a>
@@ -68,19 +81,13 @@
                 if($row->foto_empat != Null)
                   {
                     ?>
-                    <div class="col-md-6">
+                    <div class="col-md-6"  style="padding-top:20px">
                       <a href="<?php echo base_url()?>assets/foto/<?php echo $row->foto_empat ?>" target="_blank">
                         <img src="<?php echo base_url()?>assets/foto/<?php echo $row->foto_empat ?>" width="100%">
                       </a>
                     </div>
                  <?php } ?>
             
-            </div>
-            <br>
-            <div class="col-md-12" align="center">
-                <a href="<?php echo base_url()?>assets/foto/<?php echo $row->foto_lokasi ?>" target="_blank">
-                   <img src="<?php echo base_url()?>assets/foto/<?php echo $row->foto_lokasi ?>" width="100%">
-                </a>
             </div>
                 <?php }?>
           </div>

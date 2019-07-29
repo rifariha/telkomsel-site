@@ -200,35 +200,82 @@
             <br>
             <div class="col-md-12 row">
             <legend style="color:white">Network Competitor Info</legend> 
-            <div class="col-md-3">
-            <label >Network Competitor</label><br>
-               <label class="checkbox-inline">
-                   <input type="checkbox" name="competitor[]" value="XL">XL
-              </label>
-              <label class="checkbox-inline">
-                    <input type="checkbox" name="competitor[]"value="Indosat">Indosat
-              </label>
-             <label class="checkbox-inline">
-                   <input type="checkbox" name="competitor[]" value="Three">Three
-              </label>
-              <label class="checkbox-inline">
-                    <input type="checkbox" name="competitor[]" value="Smartfren">Smartfren
-              </label>
+            <div class="col-md-12"><br></div>
+                <div class="col-md-12 row">
+                  <div class="col-md-3">
+                    <input type="checkbox" name="competitor[]" value="XL"><span style="color:white"> XL </span>
+                  </div>
+                  <div class="col-md-9">
+                    <select name="network_competitor[]" class="form-control">
+                      <option value="">- Pilih Network -</option>
+                      <option value="2G">2G</option>
+                      <option value="2G 3G">2G 3G</option>
+                      <option value="3G">3G</option>
+                      <option value="3G 4G">3G 4G</option>
+                      <option value="2G 3G 4G">2G 3G 4G</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12"><br></div>
+                  <div class="col-md-3">
+                    <input type="checkbox" name="competitor[]" value="Indosat"><span style="color:white"> Indosat </span>
+                  </div>
+                  <div class="col-md-9">
+                    <select name="network_competitor[]" class="form-control">
+                      <option value="">- Pilih Network -</option>
+                      <option value="2G">2G</option>
+                      <option value="2G 3G">2G 3G</option>
+                      <option value="3G">3G</option>
+                      <option value="3G 4G">3G 4G</option>
+                      <option value="2G 3G 4G">2G 3G 4G</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12"><br></div>
+                  <div class="col-md-3">
+                    <input type="checkbox" name="competitor[]" value="Three"><span style="color:white"> Three </span>
+                  </div>
+                  <div class="col-md-9">
+                    <select name="network_competitor[]" class="form-control" >
+                      <option value="">- Pilih Network -</option>
+                      <option value="2G">2G</option>
+                      <option value="2G 3G">2G 3G</option>
+                      <option value="3G">3G</option>
+                      <option value="3G 4G">3G 4G</option>
+                      <option value="2G 3G 4G">2G 3G 4G</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12"><br></div>
+                  <div class="col-md-3">
+                    <input type="checkbox" name="competitor[]" value="Smartfen"><span style="color:white"> Smartfren </span>
+                  </div>
+                  <div class="col-md-9">
+                    <select name="network_competitor[]" class="form-control" >
+                      <option value="">- Pilih Network -</option>
+                      <option value="2G">2G</option>
+                      <option value="2G 3G">2G 3G</option>
+                      <option value="3G">3G</option>
+                      <option value="3G 4G">3G 4G</option>
+                      <option value="2G 3G 4G">2G 3G 4G</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12"><br></div>
+                  <div class="col-md-3">
+                    <input type="checkbox" name="competitor[]" value="Others"><span style="color:white"> Others </span>
+                  </div>
+                  <div class="col-md-9">
+                    <select name="network_competitor[]" class="form-control" >
+                      <option value="">- Pilih Network -</option>
+                      <option value="2G">2G</option>
+                      <option value="2G 3G">2G 3G</option>
+                      <option value="3G">3G</option>
+                      <option value="3G 4G">3G 4G</option>
+                      <option value="2G 3G 4G">2G 3G 4G</option>
+                    </select>
+                  </div>
             </div>
-            <div class="col-md-3">
-            <label>Network Competitor</label>
-              <select name="network" class="form-control" required>
-                <option value="">- Pilih Network -</option>
-                <option value="2G">2G</option>
-                <option value="2G 3G">2G 3G</option>
-                <option value="3G">3G</option>
-                <option value="3G 4G">3G 4G</option>
-                <option value="2G 3G 4G">2G 3G 4G</option>
-              </select>
-            </div>
-            <div class="col-md-6">
+            
+            <div class="col-md-12">
             <label>Remark</label>
-              <input type="text" name="remark" placeholder="Remark" class="form-control" required>
+              <textarea type="text" name="remark" placeholder="Remark" class="form-control" rows="5" required></textarea>
             </div>
         </div>
         <div class="col-md-12">

@@ -36,9 +36,49 @@ class Site extends CI_Controller {
 		$this->load->view('template/footer2');
 	}
 
+	public function edit()
+	{
+		$id = $this->uri->segment(4);
+		$data = array(
+			'kode_lokasi' => $id,
+			'populasi' => $this->input->post('populasi'),
+			'arpu' => $this->input->post('arpu'),
+			'tower_usulan' => $this->input->post('tower_usulan'),
+			'band_usulan' => $this->input->post('band_usulan'),
+			'jarak' => $this->input->post('jarak'),
+			'site' =>$this->input->post('site'),
+			'outlet'=>$this->input->post('outlet'),
+			'reg_dev' =>$this->input->post('reg_dev'),
+			'kat_poi'=>$this->input->post('kat_poi'),
+			'form'=>$this->input->post('form_survey'),
+			'summary_survey'=>$this->input->post('summary_survey'),
+			'remark'=>$this->input->post('remark')
+			);
+		$this->db->where('kode_lokasi',$id);
+		$this->db->update('tb_tower',$data);
+
+			$data2 = array(
+	        	'user' => $this->session->userdata('username'),
+	        	'input' => $id,
+	        	'aksi' => 'ubah'
+	        	);
+		$this->db->insert('tb_log',$data2);	
+
+		$this->session->set_flashdata('notif','<div class="alert alert-info" role="alert"> Data berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('Admin/Site');
+
+	}
+
 	public function hapus($param = "")
 	{
 		$this->dbObject->remove_general('tb_tower','hapus',1,'kode_lokasi',$param);
+
+		$data2 = array(
+	        	'user' => $this->session->userdata('username'),
+	        	'input' => $id,
+	        	'aksi' => 'hapus'
+	        	);
+		$this->db->insert('tb_log',$data2);
 
 		$this->session->set_flashdata('notif','<div class="alert alert-info" role="alert"> Data berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		redirect('Admin/Site');
@@ -231,7 +271,7 @@ class Site extends CI_Controller {
 	      $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $data->outlet);
 	      $excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $data->reg_dev);
 	      $excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $data->kat_poi);
-	      $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $data->form_survey);
+	      $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $data->form);
 	      $excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow, $data->summary_survey);
 	      $excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow, $data->competitor);
 	      $excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow, $data->network);

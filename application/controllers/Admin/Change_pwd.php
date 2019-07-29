@@ -19,7 +19,7 @@ class Change_pwd extends CI_Controller {
 		$data['judul'] = 'Ganti Password';
 		$this->session->set_userdata('menu','pwd');
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar',$data);
+		$this->load->view('template/sidebar_admin',$data);
 		$this->load->view('admin/pwd');
 		$this->load->view('template/footer');
 	}
@@ -38,17 +38,17 @@ class Change_pwd extends CI_Controller {
 			if($user_pwd != $old_pwd)
 			{
 				$this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Password lama yang anda masukkan salah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('User/Change_pwd');
+				redirect('Admin/Change_pwd');
 			}
 			else if($new_pwd != $re_new_pwd)
 			{
 				$this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert"> Ulangan password baru anda salah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('User/Change_pwd');
+				redirect('Admin/Change_pwd');
 			}
 			else
 			{
 				$this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Password Berhasil Diganti <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				redirect('User/Change_pwd');	
+				redirect('Admin/Change_pwd');	
 			}
 
 	}
