@@ -35,7 +35,7 @@
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
   
-                <a href="<?php echo base_url()?>User/List">
+                <a href="<?php echo base_url()?>User/Site_user">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
